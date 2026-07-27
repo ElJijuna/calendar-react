@@ -1,7 +1,7 @@
 {
   "name": "temporal-calendar-react",
   "version": "0.1.0",
-  "description": "Small, feature-rich, accessible calendar components for React 19 — a full React port of Cally",
+  "description": "Small, feature-rich, accessible calendar components for React 19 \u2014 a full React port of Cally",
   "license": "MIT",
   "type": "module",
   "sideEffects": [
@@ -52,8 +52,8 @@
     "dev": "vite --config vite.demo.config.ts",
     "build": "vite build && node scripts/copy-styles.mjs",
     "typecheck": "tsc --noEmit",
-    "lint": "biome check . && eslint .",
-    "lint:fix": "biome check --write . && eslint . --fix",
+    "lint": "biome check . && eslint . && stylelint \"src/**/*.css\"",
+    "lint:fix": "biome check --write . && eslint . --fix && stylelint \"src/**/*.css\" --fix",
     "format": "biome format --write .",
     "test": "jest",
     "test:watch": "jest --watch",
