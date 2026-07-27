@@ -1,7 +1,7 @@
 {
   "name": "temporal-calendar-react",
-  "version": "0.1.0",
-  "description": "Small, feature-rich, accessible calendar components for React 19 \u2014 a full React port of Cally",
+  "version": "0.2.0",
+  "description": "Small, feature-rich, accessible calendar components for React 19 — a full React port of Cally",
   "license": "MIT",
   "type": "module",
   "sideEffects": [
