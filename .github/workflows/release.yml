@@ -31,6 +31,10 @@ jobs:
           cache: npm
           registry-url: https://registry.npmjs.org
 
+      # trusted publishing (OIDC) needs npm >= 11.5.1; Node 22 still ships npm 10
+      - name: Use a recent npm
+        run: npm install -g npm@latest
+
       - run: npm ci
 
       - name: Build
@@ -44,6 +48,6 @@ jobs:
           commit: 'chore: version packages'
           title: 'chore: version packages'
         env:
+          # npm auth comes from the trusted publisher (OIDC) configured on npmjs.com;
+          # provenance is generated automatically, so no NPM_TOKEN is needed
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_CONFIG_PROVENANCE: true
