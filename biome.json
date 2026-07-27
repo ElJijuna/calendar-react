@@ -1,0 +1,14 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.5/schema.json",
+  "extends": ["super-configs/biome"],
+  "files": {
+    "includes": [
+      "!**/dist",
+      "!**/coverage",
+      "!**/storybook-static",
+      "!**/node_modules",
+      "!**/CHANGELOG.md",
+      "!**/.changeset"
+    ]
+  }
+}

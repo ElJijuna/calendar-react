@@ -1,0 +1,65 @@
+name: Bug report
+description: Something does not work as documented
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to file a report.
+
+  - type: input
+    id: version
+    attributes:
+      label: temporal-calendar version
+      placeholder: 0.1.0
+    validations:
+      required: true
+
+  - type: input
+    id: react-version
+    attributes:
+      label: React version
+      placeholder: 19.2.0
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you expect instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: A minimal code sample, or a link to a StackBlitz / CodeSandbox.
+      render: tsx
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      multiple: true
+      options:
+        - CalendarDate
+        - CalendarRange
+        - CalendarMulti
+        - CalendarMonth
+        - CalendarHeading
+        - CalendarSelectYear / CalendarSelectMonth
+        - Keyboard navigation
+        - Accessibility
+        - Localization
+        - Styling / data-part
+        - Types
+        - Build / packaging
+
+  - type: input
+    id: environment
+    attributes:
+      label: Browser and OS
+      placeholder: Firefox 140, macOS 15

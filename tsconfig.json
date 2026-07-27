@@ -1,0 +1,31 @@
+{
+  "extends": "super-configs/tsconfig/react",
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "exactOptionalPropertyTypes": false,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "temporal-calendar": ["./src/index.ts"]
+    },
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "rootDir": ".",
+    "outDir": "dist",
+    "types": ["node", "jest", "@testing-library/jest-dom"]
+  },
+  "include": ["src", "demo", "vite.config.ts", "vite.demo.config.ts", "jest.config.ts"],
+  "exclude": ["node_modules", "dist"]
+}

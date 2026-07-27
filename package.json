@@ -1,0 +1,110 @@
+{
+  "name": "temporal-calendar",
+  "version": "0.0.0",
+  "description": "Small, feature-rich, accessible calendar components for React 19 \u2014 a full React port of Cally",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "keywords": [
+    "react",
+    "react19",
+    "calendar",
+    "date-picker",
+    "datepicker",
+    "range-picker",
+    "accessible",
+    "a11y",
+    "headless",
+    "cally",
+    "temporal"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElJijuna/calendar-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ElJijuna/calendar-react/issues"
+  },
+  "homepage": "https://github.com/ElJijuna/calendar-react#readme",
+  "files": [
+    "dist"
+  ],
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./package.json": "./package.json"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "dev": "vite --config vite.demo.config.ts",
+    "build": "vite build && node scripts/copy-styles.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check . && eslint .",
+    "lint:fix": "biome check --write . && eslint . --fix",
+    "format": "biome format --write .",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "check:exports": "attw --pack . --profile esm-only --exclude-entrypoints styles.css && publint",
+    "prepublishOnly": "npm run build",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "changeset publish",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.2",
+    "@biomejs/biome": "^2.5.3",
+    "@changesets/cli": "^2.29.7",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@storybook/addon-a11y": "^10.5.4",
+    "@storybook/addon-docs": "^10.5.4",
+    "@storybook/react-vite": "^10.5.4",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "^30.0.0",
+    "@types/jest-axe": "^3.5.9",
+    "@types/node": "^24.5.2",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.4",
+    "eslint": "^10.0.0",
+    "jest": "^30.2.0",
+    "jest-axe": "^10.0.0",
+    "jest-environment-jsdom": "^30.2.0",
+    "prettier": "^3.6.2",
+    "publint": "^0.3.14",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "storybook": "^10.5.4",
+    "stylelint": "^16.25.0",
+    "stylelint-config-standard": "^39.0.1",
+    "super-configs": "^1.20.0",
+    "ts-jest": "^29.4.4",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.0",
+    "vite": "8.1.5",
+    "vite-plugin-dts": "^4.5.4"
+  }
+}

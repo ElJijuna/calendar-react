@@ -1,0 +1,11 @@
+node_modules/
+dist/
+coverage/
+demo/dist/
+*.log
+.DS_Store
+.idea/
+.vscode/
+*.tsbuildinfo
+.eslintcache
+storybook-static/

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and ideas
+    url: https://github.com/ElJijuna/calendar-react/discussions
+    about: Ask usage questions or discuss ideas before opening an issue.
+  - name: Cally (the original web components)
+    url: https://github.com/WickyNilliams/cally
+    about: For issues in the upstream library this port mirrors.
