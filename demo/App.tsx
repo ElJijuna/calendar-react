@@ -8,7 +8,7 @@ import {
   CalendarSelectMonth,
   CalendarSelectYear,
   type DateRange,
-} from 'temporal-calendar';
+} from 'temporal-calendar-react';
 import '../src/styles.css';
 
 const Demo = ({ title, children }: { title: string; children: ReactNode }) => {
@@ -30,7 +30,7 @@ export const App = () => {
 
   return (
     <main dir={dir} style={{ font: '1rem/1.5 system-ui', padding: '2rem', maxWidth: 900 }}>
-      <h1>temporal-calendar</h1>
+      <h1>temporal-calendar-react</h1>
 
       <p style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
         <label>

@@ -16,7 +16,7 @@ const config: StorybookConfig = {
       ...viteConfig.resolve,
       alias: {
         ...viteConfig.resolve?.alias,
-        'temporal-calendar': resolve(here, '../src/index.ts'),
+        'temporal-calendar-react': resolve(here, '../src/index.ts'),
       },
     },
   }),

@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      'temporal-calendar': resolve(__dirname, 'src/index.ts'),
+      'temporal-calendar-react': resolve(__dirname, 'src/index.ts'),
     },
   },
   server: {

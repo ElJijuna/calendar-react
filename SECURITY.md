@@ -17,7 +17,7 @@ Include the affected version, a description of the impact, and a reproduction if
 
 ## Scope
 
-`temporal-calendar` is a client-side UI library with **no runtime dependencies** and no network access. The most likely classes of issue are:
+`temporal-calendar-react` is a client-side UI library with **no runtime dependencies** and no network access. The most likely classes of issue are:
 
 - Untrusted values injected into the DOM through `getDayParts` or custom `heading` / label content.
 - Denial of service from unbounded props (e.g. an extreme `months` or `maxYears`).

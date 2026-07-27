@@ -1,4 +1,4 @@
-# temporal-calendar
+# temporal-calendar-react
 
 Small, feature-rich, accessible calendar components for **React 19** — a complete port of [Cally](https://github.com/WickyNilliams/cally) with no web components, no shadow DOM and **zero runtime dependencies**.
 
@@ -10,14 +10,14 @@ Small, feature-rich, accessible calendar components for **React 19** — a compl
 - 📦 ESM-only, tree-shakeable, ~6.7 kB gzipped, typed end to end
 
 ```bash
-npm install temporal-calendar
+npm install temporal-calendar-react
 ```
 
 ## Quick start
 
 ```tsx
-import { CalendarDate, CalendarMonth } from 'temporal-calendar';
-import 'temporal-calendar/styles.css'; // optional default theme
+import { CalendarDate, CalendarMonth } from 'temporal-calendar-react';
+import 'temporal-calendar-react/styles.css'; // optional default theme
 
 export function Example() {
   return (
@@ -132,7 +132,7 @@ There is no shadow DOM, so Cally's `::part()` names are exposed as `data-part` t
 The optional stylesheet exposes two custom properties:
 
 ```css
-@import 'temporal-calendar/styles.css';
+@import 'temporal-calendar-react/styles.css';
 
 [data-part~='container'] {
   --color-accent: #4f46e5;
@@ -148,7 +148,7 @@ Prefer utility classes? Skip the stylesheet and target the same tokens with Tail
 
 ## Migrating from Cally
 
-| Cally | temporal-calendar |
+| Cally | temporal-calendar-react |
 | --- | --- |
 | `<calendar-date value="…">` | `<CalendarDate value="…" onChange={…}>` |
 | `value="2026-01-01/2026-01-05"` (range) | `value={['2026-01-01', '2026-01-05']}` |
@@ -178,14 +178,14 @@ React 19 (uses `ref` as a prop) and any modern browser with `Intl.DateTimeFormat
 
 ## Badges
 
-[![npm version](https://img.shields.io/npm/v/temporal-calendar.svg?logo=npm)](https://www.npmjs.com/package/temporal-calendar)
-[![npm downloads](https://img.shields.io/npm/dm/temporal-calendar.svg?logo=npm)](https://www.npmjs.com/package/temporal-calendar)
+[![npm version](https://img.shields.io/npm/v/temporal-calendar-react.svg?logo=npm)](https://www.npmjs.com/package/temporal-calendar-react)
+[![npm downloads](https://img.shields.io/npm/dm/temporal-calendar-react.svg?logo=npm)](https://www.npmjs.com/package/temporal-calendar-react)
 [![CI](https://github.com/ElJijuna/calendar-react/actions/workflows/ci.yml/badge.svg)](https://github.com/ElJijuna/calendar-react/actions/workflows/ci.yml)
 [![Release](https://github.com/ElJijuna/calendar-react/actions/workflows/release.yml/badge.svg)](https://github.com/ElJijuna/calendar-react/actions/workflows/release.yml)
 [![CodeQL](https://github.com/ElJijuna/calendar-react/actions/workflows/codeql.yml/badge.svg)](https://github.com/ElJijuna/calendar-react/actions/workflows/codeql.yml)
-[![minzipped size](https://img.shields.io/bundlephobia/minzip/temporal-calendar)](https://bundlephobia.com/package/temporal-calendar)
-[![zero dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)](https://www.npmjs.com/package/temporal-calendar?activeTab=dependencies)
-[![types included](https://img.shields.io/npm/types/temporal-calendar)](https://www.npmjs.com/package/temporal-calendar)
+[![minzipped size](https://img.shields.io/bundlephobia/minzip/temporal-calendar-react)](https://bundlephobia.com/package/temporal-calendar-react)
+[![zero dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)](https://www.npmjs.com/package/temporal-calendar-react?activeTab=dependencies)
+[![types included](https://img.shields.io/npm/types/temporal-calendar-react)](https://www.npmjs.com/package/temporal-calendar-react)
 [![React 19](https://img.shields.io/badge/React-19-149eca?logo=react)](https://react.dev)
 [![ESM only](https://img.shields.io/badge/module-ESM--only-f7df1e)](https://nodejs.org/api/esm.html)
 [![provenance](https://img.shields.io/badge/npm-provenance-blue?logo=npm)](https://docs.npmjs.com/generating-provenance-statements)
@@ -202,7 +202,7 @@ React 19 (uses `ref` as a prop) and any modern browser with `Intl.DateTimeFormat
 
 ```tsx
 import { useState } from 'react';
-import { CalendarDate, CalendarMonth } from 'temporal-calendar';
+import { CalendarDate, CalendarMonth } from 'temporal-calendar-react';
 
 function DatePicker() {
   const [value, setValue] = useState('2026-07-26');
@@ -219,7 +219,7 @@ function DatePicker() {
 
 ```tsx
 import { useState } from 'react';
-import { CalendarMonth, CalendarRange, type DateRange } from 'temporal-calendar';
+import { CalendarMonth, CalendarRange, type DateRange } from 'temporal-calendar-react';
 
 function Stay() {
   const [range, setRange] = useState<DateRange>([]);
@@ -243,7 +243,7 @@ function Stay() {
 
 ```tsx
 import { useState } from 'react';
-import { CalendarMonth, CalendarMulti } from 'temporal-calendar';
+import { CalendarMonth, CalendarMulti } from 'temporal-calendar-react';
 
 function Availability() {
   const [dates, setDates] = useState<string[]>([]);
@@ -294,7 +294,7 @@ import {
   CalendarMonth,
   CalendarSelectMonth,
   CalendarSelectYear,
-} from 'temporal-calendar';
+} from 'temporal-calendar-react';
 
 <CalendarDate
   heading={
@@ -311,7 +311,7 @@ import {
 ### Custom paging buttons and month headings
 
 ```tsx
-import { CalendarDate, CalendarHeading, CalendarMonth } from 'temporal-calendar';
+import { CalendarDate, CalendarHeading, CalendarMonth } from 'temporal-calendar-react';
 
 <CalendarDate previous={<ChevronLeft aria-hidden />} next={<ChevronRight aria-hidden />}>
   <CalendarMonth heading={<CalendarHeading month="long" year="numeric" />} />
@@ -344,7 +344,7 @@ Right-to-left works with a plain `dir` attribute — arrow keys mirror automatic
 
 ```tsx
 import { useRef, useState } from 'react';
-import { CalendarDate, CalendarMonth, type CalendarHandle } from 'temporal-calendar';
+import { CalendarDate, CalendarMonth, type CalendarHandle } from 'temporal-calendar-react';
 
 function DateField() {
   const [open, setOpen] = useState(false);

@@ -17,7 +17,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "paths": {
-      "temporal-calendar": ["./src/index.ts"]
+      "temporal-calendar-react": ["./src/index.ts"]
     },
     "forceConsistentCasingInFileNames": true,
     "declaration": true,

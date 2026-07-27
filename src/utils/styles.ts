@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react';
 
 /**
  * Visually hidden, but still announced. Inlined so the library works without
- * importing `temporal-calendar/styles.css`.
+ * importing `temporal-calendar-react/styles.css`.
  */
 export const visuallyHidden: CSSProperties = {
   position: 'absolute',

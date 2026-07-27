@@ -1,7 +1,7 @@
 /**
- * Optional default theme for temporal-calendar.
+ * Optional default theme for temporal-calendar-react.
  *
- *   import "temporal-calendar/styles.css";
+ *   import "temporal-calendar-react/styles.css";
  *
  * Every selector targets a `data-part` token, mirroring Cally's `::part()`
  * names. Override the custom properties, or skip this file entirely and style
