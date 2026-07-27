@@ -39,7 +39,6 @@ export function useControllableState<T>({
   const onChangeRef = useRef(onChange);
 
   onChangeRef.current = onChange;
-
   const resolved = isControlled ? value : internal;
   const setValue = useCallback(
     (next: T) => {
@@ -122,12 +121,13 @@ export function useDateMultiValue(
 type DateFormatOptions = Pick<Intl.DateTimeFormatOptions, 'year' | 'month' | 'day' | 'weekday'>;
 
 export function useDateFormatter(options: DateFormatOptions, locale?: string): Intl.DateTimeFormat {
-  const key = JSON.stringify(options);
+  // depend on the individual options so a fresh object literal does not rebuild
+  // the formatter on every render
+  const { year, month, day, weekday } = options;
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: `key` is a stable serialization of `options`
   return useMemo(
-    () => new Intl.DateTimeFormat(locale, { timeZone: 'UTC', ...options }),
-    [locale, key],
+    () => new Intl.DateTimeFormat(locale, { timeZone: 'UTC', year, month, day, weekday }),
+    [locale, year, month, day, weekday],
   );
 }
 

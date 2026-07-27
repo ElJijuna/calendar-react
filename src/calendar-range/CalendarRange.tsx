@@ -94,14 +94,24 @@ export const CalendarRange = ({
     onPageChange,
     valueFallback: selected[0],
   });
+  const {
+    min: minDate,
+    max: maxDate,
+    today: todayDate,
+    page,
+    focusedDate: focusedDay,
+    focusDay: moveFocus,
+    focus,
+    containerRef,
+  } = calendar;
 
   useImperativeHandle(
     ref,
     () => ({
-      focus: calendar.focus,
-      element: calendar.containerRef.current,
+      focus,
+      element: containerRef.current,
     }),
-    [calendar.focus, calendar.containerRef],
+    [focus, containerRef],
   );
 
   const range = useMemo(
@@ -112,11 +122,11 @@ export const CalendarRange = ({
     () => ({
       type: 'range',
       value: range,
-      min: calendar.min,
-      max: calendar.max,
-      today: calendar.today,
-      page: calendar.page,
-      focusedDate: calendar.focusedDate,
+      min: minDate,
+      max: maxDate,
+      today: todayDate,
+      page,
+      focusedDate: focusedDay,
       firstDayOfWeek,
       showOutsideDays,
       showWeekNumbers,
@@ -125,7 +135,7 @@ export const CalendarRange = ({
       isDateDisallowed,
       getDayParts,
       focusDay: (date: PlainDate) => {
-        calendar.focusDay(date);
+        moveFocus(date);
 
         if (tentativeDate) {
           setHovered(date);
@@ -156,12 +166,12 @@ export const CalendarRange = ({
       setSelected,
       onRangeStart,
       onRangeEnd,
-      calendar.min,
-      calendar.max,
-      calendar.today,
-      calendar.page,
-      calendar.focusedDate,
-      calendar.focusDay,
+      minDate,
+      maxDate,
+      todayDate,
+      page,
+      focusedDay,
+      moveFocus,
       firstDayOfWeek,
       showOutsideDays,
       showWeekNumbers,
@@ -175,9 +185,9 @@ export const CalendarRange = ({
   return (
     <CalendarBase
       context={context}
-      page={calendar.page}
+      page={page}
       locale={locale}
-      containerRef={calendar.containerRef}
+      containerRef={containerRef}
       previous={calendar.previous}
       next={calendar.next}
       previousLabel={previous}

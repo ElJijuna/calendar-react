@@ -48,11 +48,9 @@ function usePagination({
   const onPageChangeRef = useRef(onPageChange);
 
   onPageChangeRef.current = onPageChange;
-
   const gotoRef = useRef(goto);
 
   gotoRef.current = goto;
-
   const updatePageBy = useCallback(
     (by: number) => {
       setPage((current) => {
@@ -76,36 +74,50 @@ function usePagination({
     },
     [months, page.start],
   );
+  // The two effects below are deliberately one-directional: each reacts to its
+  // own trigger and only *reads* the other side, so the reads go through refs.
+  const containsRef = useRef(contains);
+
+  containsRef.current = contains;
+  const updatePageByRef = useRef(updatePageBy);
+
+  updatePageByRef.current = updatePageBy;
+  const focusedDateRef = useRef(focusedDate);
+
+  focusedDateRef.current = focusedDate;
+  const pageStartRef = useRef(page.start);
+
+  pageStartRef.current = page.start;
 
   // page change -> pull the focused date into the visible page
-  // biome-ignore lint/correctness/useExhaustiveDependencies: mirrors Cally, runs on page changes only
   useEffect(() => {
-    if (contains(focusedDate)) {
+    const currentFocusedDate = focusedDateRef.current;
+
+    if (containsRef.current(currentFocusedDate)) {
       return;
     }
 
-    const diff = diffInMonths(focusedDate.toPlainYearMonth(), page.start);
+    const diff = diffInMonths(currentFocusedDate.toPlainYearMonth(), page.start);
 
-    gotoRef.current(focusedDate.add({ months: diff }));
+    gotoRef.current(currentFocusedDate.add({ months: diff }));
   }, [page.start]);
 
   // focused date change -> move the page to it
-  // biome-ignore lint/correctness/useExhaustiveDependencies: mirrors Cally's dependency list
   useEffect(() => {
-    if (contains(focusedDate)) {
+    if (containsRef.current(focusedDate)) {
       return;
     }
 
-    const diff = diffInMonths(page.start, focusedDate.toPlainYearMonth());
+    const diff = diffInMonths(pageStartRef.current, focusedDate.toPlainYearMonth());
 
     // if we only move one month either way, move by step
     if (diff === -1) {
-      updatePageBy(-step);
+      updatePageByRef.current(-step);
     } else if (diff === months) {
-      updatePageBy(step);
+      updatePageByRef.current(step);
     } else {
       // anything else, move in steps of months
-      updatePageBy(Math.floor(diff / months) * months);
+      updatePageByRef.current(Math.floor(diff / months) * months);
     }
   }, [focusedDate, step, months]);
 
@@ -164,7 +176,6 @@ export function useCalendarBase({
   const onFocusDayRef = useRef(onFocusDay);
 
   onFocusDayRef.current = onFocusDay;
-
   const [focusedDateValue, setFocusedDateValue] = useControllableState<string>({
     value: focusedDateProp,
     defaultValue: defaultFocusedDate,
@@ -229,8 +240,9 @@ export function useCalendarBase({
   );
 
   // The focused day may not be mounted yet when the page has to move first, so
-  // the request is kept pending until a day actually takes focus.
-  // biome-ignore lint/correctness/useExhaustiveDependencies: only re-focus when the focused day moves
+  // the request is kept pending until a day actually takes focus. `focus` is
+  // stable, so listing it costs nothing.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: focusedDate/page.start are triggers, read through the DOM rather than the closure
   useEffect(() => {
     if (!shouldFocusRef.current) {
       return;
@@ -239,7 +251,7 @@ export function useCalendarBase({
     if (focus()) {
       shouldFocusRef.current = false;
     }
-  }, [focusedDate, page.start]);
+  }, [focusedDate, page.start, focus]);
 
   return {
     page,
